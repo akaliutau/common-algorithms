@@ -3,6 +3,13 @@ package org.algorithm;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * 	A typical illustration of class of BSF problems
+ * 
+ *  Find the optimal path which includes max number of artifacts along the way
+ *  
+ *  
+ */
 public class Rocks {
 	
 	static class Cell {
@@ -22,12 +29,12 @@ public class Rocks {
 
 	}
 	
-	public static int getMaxRocks(int[][] map) {
+	public static int getMaxRocks(int[][] mapOfArtifacts) {
 		
-		int rows = map.length;
+		int rows = mapOfArtifacts.length;
 		int cols = 0;
 		if (rows > 0) {
-			cols = map[0].length;
+			cols = mapOfArtifacts[0].length;
 		}
 		
 		int[][] rocks = new int[rows][cols];
@@ -35,7 +42,7 @@ public class Rocks {
 		queue.add(new Cell(rows-1,0,0));
 		while (!queue.isEmpty()) {
 			Cell curCell = queue.poll();
-			int nRocks = curCell.rocks + map[curCell.row][curCell.col];
+			int nRocks = curCell.rocks + mapOfArtifacts[curCell.row][curCell.col];
 			rocks[curCell.row][curCell.col] = Math.max(nRocks, rocks[curCell.row][curCell.col]);
 			
 			if (curCell.row-1 >= 0) {
@@ -54,13 +61,13 @@ public class Rocks {
 	
 	public static void main(String[] arg) {
 		
-		int[][] map = {
+		int[][] mapOfArtifacts = {
 				{0,0,0,0,5},
 				{0,1,1,1,0},
 				{2,0,0,0,0},
 		};
 		
-		System.out.println(getMaxRocks(map));
+		System.out.println(getMaxRocks(mapOfArtifacts));
 	}
 
 }
