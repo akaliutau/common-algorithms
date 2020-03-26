@@ -3,6 +3,7 @@ package org.algorithm;
 import static org.algorithm.utils.Utils.print;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class Kadane2d {
 			this.maxSum = arr[0];
 		}
 		
-		public void find(){
+		public int[] findMax(){
 			int cumulativeSum = arr[0];// cumulative cumulativeSum
 
 			for (int i = 1; i < arr.length; i++) {
@@ -29,7 +30,7 @@ public class Kadane2d {
 				cumulativeSum = Math.max(cumulativeSum,0) + arr[i];
 				// choose max of 3 values:
 				// arr[i], maxSum and cumulativeSum
-				if (arr[i] > cumulativeSum){
+				if (arr[i] >= cumulativeSum){
 					if (cumulativeSum > maxSum) {
 						maxSum = arr[i];
 						left = i;
@@ -39,11 +40,15 @@ public class Kadane2d {
 				}else if(cumulativeSum >= maxSum) {
 					right = i;// leave the left boundary the same, update the right one
 					maxSum = cumulativeSum;
-				}else {
-					// leave all as is
 				}
 			}
+			return Arrays.copyOfRange(this.arr, left, right+1);
+			
+		}
 
+		@Override
+		public String toString() {
+			return "Subarray [left=" + left + ", right=" + right + ", maxSum=" + maxSum + "]";
 		}
 	}
 
@@ -76,7 +81,7 @@ public class Kadane2d {
 				
 				Subarray column = new Subarray(sum);
 				print(sum);
-				column.find();
+				column.findMax();
 				if (column.maxSum > sqMaxSum) {
 					bestLeft = left;
 					bestRight = right;

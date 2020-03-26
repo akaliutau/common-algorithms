@@ -1,9 +1,10 @@
 package org.algorithm;
 
-import static org.algorithm.utils.Utils.print;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import org.algorithm.utils.Utils;
 
 
 public class Kadane {
@@ -19,7 +20,7 @@ public class Kadane {
 			this.maxSum = arr[0];
 		}
 		
-		public void find(){
+		public int[] findMax(){
 			int cumulativeSum = arr[0];// cumulative cumulativeSum
 
 			for (int i = 1; i < arr.length; i++) {
@@ -27,7 +28,7 @@ public class Kadane {
 				cumulativeSum = Math.max(cumulativeSum,0) + arr[i];
 				// choose max of 3 values:
 				// arr[i], maxSum and cumulativeSum
-				if (arr[i] > cumulativeSum){
+				if (arr[i] >= cumulativeSum){
 					if (cumulativeSum > maxSum) {
 						maxSum = arr[i];
 						left = i;
@@ -37,28 +38,37 @@ public class Kadane {
 				}else if(cumulativeSum >= maxSum) {
 					right = i;// leave the left boundary the same, update the right one
 					maxSum = cumulativeSum;
-				}else {
-					// leave all as is
 				}
 			}
-
+			return Arrays.copyOfRange(this.arr, left, right+1);
+			
 		}
+
+		@Override
+		public String toString() {
+			return "Subarray [left=" + left + ", right=" + right + ", maxSum=" + maxSum + "]";
+		}
+		
+		
 	}
 	
 
-	//static final int[] array = new int[] { 1, -3, 4, 6, -2 };
-	static final int[] array = new int[] { 1, -2, 3, 5, -6, 4 };
-	//static final int[] array = new int[] { -1, -2 };
+	static final int[] array1 = new int[] { 1, -3, 4, 6, -2 };
+	static final int[] array2 = new int[] { 1, -2, 3, 5, -6, 4 };
+	static final int[] array3 = new int[] { -1, -2 };
 
 	public static void main(String[] arg) {
-		List<Integer> result = new ArrayList<>();
-		Subarray subarray = new Subarray(array);
-		subarray.find();
-		for (int i = subarray.left; i <= subarray.right; i++) {
-			result.add(array[i]);
-		}
-		System.out.println("found:"+result.toString());
+		Subarray subarray1 = new Subarray(array1);
+		Utils.print(subarray1.findMax());
+		System.out.println(subarray1);
 
-	}
+		Subarray subarray2 = new Subarray(array2);
+		Utils.print(subarray2.findMax());
+		System.out.println(subarray2);
+
+		Subarray subarray3 = new Subarray(array3);
+		Utils.print(subarray3.findMax());
+		System.out.println(subarray3);
+}
 
 }

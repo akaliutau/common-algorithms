@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 	Implementation of heap structure from scratches
+ * 	Implementation of heap structure from the scratch
  */
 public class HeapSort {
 	

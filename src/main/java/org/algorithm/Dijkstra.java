@@ -45,10 +45,11 @@ public class Dijkstra {
 		while(toProcess.size() > 0) {
 			Node curNode = nodes.get(toProcess.remove(0));
 			Set<String> connected = curNode.children.keySet();
-			for (String id : connected) {
+			for (String id : connected) {// investigate all connections
 				if (processed.contains(id) || id.equals(curNode.id)) continue;
 				Node refNode = nodes.get(id);
 				int dist = curNode.children.get(id);
+				// best path must have a min sum, i.e. to be optimal
 				if (refNode.dist > dist+curNode.dist) {
 					refNode.prev = curNode.id;
 					refNode.dist = dist+curNode.dist;
