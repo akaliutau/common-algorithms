@@ -2,17 +2,16 @@ package org.algorithm;
 
 public class Permutation {
 	
-    // print N! permutations of the elements of array
-    public static long perm2(int[] array) {
-       int N = array.length;
-       int[] a = new int[N];
-       for (int i = 0; i < N; i++) {
-           a[i] = array[i];
-       }
-       return perm2(a, N);
+	   // swap the characters at indices i and j
+    private static void swap(int[] a, int i, int j) {
+    	int c;
+        c = a[i]; 
+        a[i] = a[j];
+        a[j] = c;
     }
 
-    private static long perm2(int[] array, int n) {
+	
+     private static long perm2(int[] array, int n) {
         if (n == 1) {
         	print(array);
             return 1;
@@ -26,12 +25,18 @@ public class Permutation {
         return counter;
     }  
 
-    // swap the characters at indices i and j
-    private static void swap(int[] a, int i, int j) {
-    	int c;
-        c = a[i]; a[i] = a[j]; a[j] = c;
-    }
-	
+     // print N! permutations of the elements of array
+     public static long perm2(int[] array) {
+        int n = array.length;
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = array[i];
+        }
+        return perm2(a, n);
+     }
+
+
+ 
 	
 	public static void print(int[] vector) {
 		StringBuilder sb = new StringBuilder();
