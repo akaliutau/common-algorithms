@@ -1,11 +1,7 @@
 package org.algorithm;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
 import org.algorithm.utils.Utils;
-
 
 public class Kadane {
 	
@@ -25,6 +21,7 @@ public class Kadane {
 
 			for (int i = 1; i < arr.length; i++) {
 				// update a cumulative cumulativeSum for subarray [bestLeft,i]
+				// will be reset to 0, if cumulativeSum falls under 0
 				cumulativeSum = Math.max(cumulativeSum,0) + arr[i];
 				// choose max of 3 values:
 				// arr[i], maxSum and cumulativeSum
