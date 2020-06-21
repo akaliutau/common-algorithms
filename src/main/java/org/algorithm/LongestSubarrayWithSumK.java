@@ -1,5 +1,10 @@
 package org.algorithm;
 
+/**
+ * Given an array A of n numbers and a key k, and returns the length of a
+ * longest subarray of A for which the subarray sum is less than or equal to k.
+ *
+ */
 public class LongestSubarrayWithSumK {
 
 	public static int findLongestSubarrayLessEqualK(int[] arr, int k) {
@@ -38,7 +43,9 @@ public class LongestSubarrayWithSumK {
 
 	public static void main(String[] arg) {
 
-		System.out.println(true);
+		int[] arr = { 431, -15, 639, 342, -14, 565, -924, 635, 167, -70 };
+
+		System.out.println(findLongestSubarrayLessEqualK(arr, 184));
 
 	}
 
