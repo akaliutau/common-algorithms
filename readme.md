@@ -11,7 +11,7 @@ Overview
 
 The package <b> org.algorithm </b> contains java implementations of several well-known problems in CS. Here is the list of classes:
 
-Cellular - actually this is a solution for problem proposed during Amazon's code test interview
+Cellular - event propagation in 2D grid
 
 DescreteOptimisation - brute force solution for typical MinMax problem
 

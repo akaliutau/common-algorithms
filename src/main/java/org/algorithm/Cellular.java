@@ -1,7 +1,7 @@
 package org.algorithm;
 
 /**
- * 	Solution for Amazon's code test (regarding event's propagation in 2d grid)
+ *  Event's propagation in 2d grid
  *  using binary representation of grid of cells
  */
 public class Cellular {
